@@ -11,7 +11,7 @@ services:
       - PGID=0
       - TZ=Asia/Singapore
       - SERVERURL=connection.brahui.dev
-      - SERVERPORT=${WIREGUARD_PORT:-51820}
+      - SERVERPORT=51820
       - PEERS=5 #optional
       - PEERDNS=auto #optional
       - INTERNAL_SUBNET=10.13.13.0 #optional
@@ -22,7 +22,7 @@ services:
       - /root/shared/wireguard-config:/config
       - /lib/modules:/lib/modules #optional
     ports:
-      - "${WIREGUARD_PORT:-51820}:${WIREGUARD_PORT:-51820}/udp"
+      - "${WIREGUARD_PORT:-51820}:${SERVERPORT:-51820}/udp"
     sysctls:
       - net.ipv4.conf.all.src_valid_mark=1
     restart: unless-stopped
